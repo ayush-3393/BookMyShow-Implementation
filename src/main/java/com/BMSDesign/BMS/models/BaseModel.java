@@ -7,9 +7,9 @@ import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
 @MappedSuperclass
+@Setter
+@Getter
 public class BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,29 +1,26 @@
 package com.BMSDesign.BMS.models;
 
-import com.BMSDesign.BMS.models.enums.Features;
+import com.BMSDesign.BMS.models.enums.SeatType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
 @Entity
-@Setter
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Auditorium extends BaseModel{
+public class Seat extends BaseModel{
     private String number;
-
-    private int maxRows;
-    private int maxCols;
+    private int rowNum;
+    private int colNum;
 
     @Enumerated(EnumType.ORDINAL)
-    @ElementCollection
-    private List<Features> supportedFeatures;
+    private SeatType seatType;
 
     @ManyToOne
-    @JoinColumn(name = "theater_id")
-    private Theater theater;
+    @JoinColumn(name = "auditorium_id")
+    private Auditorium auditorium;
 }
