@@ -1,10 +1,7 @@
 package com.BMSDesign.BMS.models;
 
 import com.BMSDesign.BMS.models.enums.Features;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,7 +21,8 @@ public class Movie extends BaseModel{
     @ElementCollection
     private List<Features> requiredFeatures;
 
-//    private List<Actor> actors;
+    @ManyToMany
+    private List<Actor> cast;
 
     private int runTime;
 }

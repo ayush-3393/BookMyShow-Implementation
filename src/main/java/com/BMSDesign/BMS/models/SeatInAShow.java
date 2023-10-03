@@ -1,26 +1,29 @@
 package com.BMSDesign.BMS.models;
 
-import com.BMSDesign.BMS.models.enums.SeatType;
+import com.BMSDesign.BMS.models.enums.SeatStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+import java.util.Date;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Seat extends BaseModel{
-    private String number;
-    private int rowNum;
-    private int colNum;
+@Entity
+public class SeatInAShow extends BaseModel {
 
     @Enumerated(EnumType.ORDINAL)
-    private SeatType seatType;
+    private SeatStatus seatStatus;
 
     @ManyToOne
-//    @JoinColumn(name = "auditorium_id")
-    private Auditorium auditorium;
+    private Seat seat;
+
+    @ManyToOne
+    private MovieShow movieShow;
+
+    private Date lockedAt;
 }
